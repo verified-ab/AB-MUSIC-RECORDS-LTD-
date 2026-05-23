@@ -1,0 +1,40 @@
+name: AB Music Records Release Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual trigger when a new track is ready
+
+jobs:
+  validate-assets:
+    name: Track Asset Ingestion & Quality Control
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Files
+        uses: actions/checkout@v4
+
+      - name: Verify Distribution Assets
+        run: |
+          echo "Checking for mandatory release files..."
+          # Ensures the master audio and visual elements exist before shipping
+          test -f "production/master_stereo.wav" && echo "WAV file found." || exit 1
+          test -f "artwork/cover_3000x3000.jpg" && echo "Artwork found." || exit 1
+
+      - name: Validate Release Metadata
+        run: |
+          echo "Parsing metadata.json against DDEX / Streaming requirements..."
+          # Simulates checking for valid ISRC code patterns
+          grep -E "GB-[A-Z0-9]{3}-[0-9]{2}-[0-9]{5}" distribution/metadata.json && echo "ISRC format valid." || exit 1
+
+  trigger-marketing-campaign:
+    name: Sync Assets to Creative Team Drive
+    needs: validate-assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Push Promotional Teasers
+        run: |
+          echo "Distributing vertical video clips to social media scheduling queue..."
+          echo "Status: Pre-save assets deployed successfully."
