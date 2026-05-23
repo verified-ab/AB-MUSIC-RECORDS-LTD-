@@ -1,3 +1,2 @@
-## 🅰️🅱️ MUSIC 🎼
-🆎 Music Booklet 🔖 – Earn or Buy More than music 🎶
-it’s a key 🔑. Valued at 💲1 Billion. it gives you access to special opportunities and the things you need in life to keep moving forward. You can earn it through support or buy it directly.
+##AB MUSIC RECORDS LTD
+AB MUSIC RECORDS LTD is an independent music label founded by Abraham Onyebuchi (AB) focused on creating, promoting, and distributing authentic music with global reach. The label blends raw street storytelling with drill and Afro-inspired sounds, turning real-life experiences into powerful music. Built on resilience, creativity, and independence, AB MUSIC RECORDS LTD is dedicated to developing strong artist identities and connecting with audiences worldwide.™️ More than a label—it’s a movement.
