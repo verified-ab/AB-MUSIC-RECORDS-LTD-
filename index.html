@@ -1,62 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🆎 Music — Earning Booklet</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b0b10; --card:#12121a; --ink:#e8e9f0; --muted:#a7abc2;
-      --brand:#2563eb; --brand2:#3b82f6; --glow:#60a5fa;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background: linear-gradient(180deg, #0a0a12, #0b0b10 25%, #0a0a12);
-      color:var(--ink);
-    }
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
-    .card{background:#12121a;border-radius:24px;padding:48px;text-align:center}
-    .logo{max-width:200px;margin-bottom:20px}
-    .badge{display:inline-block;padding:6px 12px;border-radius:999px;
-      background:rgba(37,99,235,.18);border:1px solid rgba(37,99,235,.35);
-      font-weight:600;color:#dbeafe}
-    .title{font-size:clamp(36px,6vw,64px);line-height:1.05;margin:16px 0;font-weight:800}
-    .subtitle{font-size:clamp(16px,2.4vw,22px);color:var(--muted);max-width:780px;margin:0 auto}
-    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-    .btn{padding:14px 20px;border-radius:14px;font-weight:700;
-      border:1px solid rgba(255,255,255,.12);background:#1a1a24;
-      cursor:pointer;text-decoration:none;color:white}
-    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .footer{opacity:.7;font-size:14px;text-align:center;padding:22px}
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>🆎 Music — Earning Booklet & HQ Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a12; 
+            --card: #12121a; 
+            --ink: #e8e9f0; 
+            --muted: #a7abc2;
+            --brand: #2563eb; 
+            --brand2: #3b82f6; 
+            --glow: #60a5fa;
+            --accent-drill: #ff3e3e;
+            --accent-green: #238636;
+            --border-color: #262636;
+        }
+        
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background: linear-gradient(180deg, #0a0a12, #0b0b10 25%, #0a0a12);
+            color: var(--ink);
+            padding: 24px;
+        }
+        
+        .wrap { max-width: 1100px; margin: 0 auto; }
+        
+        /* Integrated Brand Header Card */
+        .header-card { 
+            background: var(--card); 
+            border-radius: 24px; 
+            padding: 48px 24px; 
+            text-align: center;
+            border: 1px solid var(--border-color);
+            margin-bottom: 32px;
+        }
+        
+        .logo { 
+            max-width: 180px; 
+            border-radius: 12px;
+            margin-bottom: 20px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        
+        .badge { 
+            display: inline-block; 
+            padding: 6px 14px; 
+            border-radius: 999px;
+            background: rgba(37,99,235,.15); 
+            border: 1px solid rgba(37,99,235,.35);
+            font-weight: 600; 
+            color: #dbeafe;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+        
+        .title { 
+            font-size: clamp(32px, 5vw, 52px); 
+            line-height: 1.1; 
+            margin: 16px 0; 
+            font-weight: 800;
+            color: var(--ink);
+        }
+        
+        .subtitle { 
+            font-size: clamp(15px, 2vw, 18px); 
+            color: var(--muted); 
+            max-width: 780px; 
+            margin: 0 auto 24px auto;
+            line-height: 1.5;
+        }
+        
+        .cta-row { 
+            display: flex; 
+            gap: 12px; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+        
+        .btn { 
+            padding: 12px 24px; 
+            border-radius: 12px; 
+            font-weight: 700;
+            border: 1px solid var(--border-color); 
+            background: #1a1a24;
+            cursor: pointer; 
+            text-decoration: none; 
+            color: white;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn.primary { 
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            border: none;
+        }
+        
+        .btn.primary:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .btn:hover {
+            background: #222230;
+        }
+
+        /* HQ Operational Sections */
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin: 32px 0 16px 0;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--brand2);
+            border-left: 4px solid var(--brand);
+            padding-left: 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+        }
+
+        .app-card {
+            background-color: var(--card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .app-card h2 {
+            color: var(--ink);
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            background-color: #0b0b10;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--ink);
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--brand2);
+            outline: none;
+        }
+
+        .row-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .app-btn {
+            background-color: var(--brand);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .app-btn:hover { background-color: var(--brand2); }
+        
+        .app-btn.secondary {
+            background-color: #1a1a24;
+            border: 1px solid var(--border-color);
+            color: var(--ink);
+        }
+        .app-btn.secondary:hover { background-color: #222230; }
+
+        .app-btn.success {
+            background-color: var(--accent-green);
+        }
+        .app-btn.success:hover { background-color: #2ea043; }
+
+        /* Tables & Outputs */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .terminal-output {
+            background-color: #050508;
+            font-family: "Courier New", Courier, monospace;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: #39ff14;
+            white-space: pre-wrap;
+            height: 320px;
+            overflow-y: auto;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .cash-badge {
+            background-color: var(--accent-drill);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .footer {
+            opacity: .5;
+            font-size: 13px;
+            text-align: center;
+            padding: 40px 22px 22px 22px;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="card">
-      <img class="logo" src="https://raw.githubusercontent.com/verified-ab/AB-EARNING-/refs/heads/main/public/0abe3498-8d89-4f21-ae46-dda69b14bdb2.jpeg" />
-      <div class="badge">🆎 Music · Earning Booklet 🔖</div>
-      <h1 class="title"></h1>
-      <p class="subtitle">
-        More Than Music — It’s a Key 🔑 Earn it or buy it. The <strong>🆎 Music Booklet</strong> unlocks fan perks, access, and drops.
-        Valued at <b>$1,000,000,000</b> — a symbol of limitless potential.
-      </p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://payhip.com/abearning" target="_blank">✨ Earn the Booklet</a>
-        <a class="btn" href="#buy">💳 Buy Now</a>
-        <a class="btn" href="#access">🔓 What You Unlock</a>
-      </div>
-    </header>
 
-    <p class="footer">© <span id="yr"></span> 🆎 Music · All rights reserved</p>
-  </main>
+    <main class="wrap">
+        <!-- Brand Header Section -->
+        <header class="header-card">
+            <img class="logo" src="https://raw.githubusercontent.com/verified-ab/AB-EARNING-/refs/heads/main/public/0abe3498-8d89-4f21-ae46-dda69b14bdb2.jpeg" alt="🆎 Music Logo" />
+            <br>
+            <div class="badge">🆎 Music · Earning Booklet 🔖</div>
+            <h1 class="title">AB MUSIC RECORDS LTD</h1>
+            <p class="subtitle">
+                More Than Music — It’s a Key 🔑 Earn it or buy it. The <strong>🆎 Music Booklet</strong> unlocks fan perks, access, and drops.
+                Valued at <b>$1,000,000,000</b> — a symbol of limitless potential.
+            </p>
+            <div class="cta-row">
+                <a class="btn primary" href="https://payhip.com/abearning" target="_blank">✨ Earn the Booklet</a>
+                <a class="btn" href="#portal">💻 Access Label Dashboard</a>
+                <a class="btn" href="https://payhip.com/abearning" target="_blank">💳 Buy Now</a>
+            </div>
+        </header>
 
-  <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
-  </script>
+        <div id="portal"></div>
+        <div class="section-title">Label HQ Operations Terminal</div>
+
+        <!-- App Control Management Grid -->
+        <div class="grid">
+            <!-- Left Side: Registration Form -->
+            <div class="app-card">
+                <h2>Asset Registration (Sign Drill Tracks)</h2>
+                <form id="trackForm">
+                    <div class="form-group">
+                        <label>Track Title</label>
+                        <input type="text" id="trackName" placeholder="e.g., Local Danger (UK Drill)" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Unique ISRC Code</label>
+                        <input type="text" id="isrc" placeholder="e.g., GB-A1B-26-00001" required>
+                    </div>
+                    <div class="row-inputs">
+                        <div class="form-group">
+                            <label>Artist Name</label>
+                            <input type="text" id="artistName" placeholder="Rapper" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Producer Name</label>
+                            <input type="text" id="producerName" placeholder="Beatmaker" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Video/Studio Advance ($)</label>
+                            <input type="number" id="advance" value="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="row-inputs">
+                        <div class="form-group">
+                            <label>AB Music Share %</label>
+                            <input type="number" id="labelShare" value="50" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Artist Share %</label>
+                            <input type="number" id="artistShare" value="35" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Producer Share %</label>
+                            <input type="number" id="producerShare" value="15" min="0" max="100">
+                        </div>
+                    </div>
+                    <button type="submit" class="app-btn">Deploy Asset to Catalog</button>
+                </form>
+            </div>
+
+            <!-- Right Side: Statement Processor -->
+            <div class="app-card">
+                <h2>Global Streaming Revenue Input</h2>
+                <div class="form-group">
+                    <label>Paste Streaming Data Input (Format: ISRC, Source, GrossRevenue)</label>
+                    <textarea id="csvInput" rows="7" placeholder="GB-A1B-26-00001, Spotify UK, 2500.00&#10;GB-A1B-26-00001, Apple Music, 1200.50"></textarea>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 10px;">
+                    <button class="app-btn secondary" onclick="loadSampleCSV()">Load Test Data</button>
+                    <button class="app-btn success" onclick="calculateRoyalties()">Run Revenue Allocation Machine</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Display Ledger Grid -->
+        <div class="grid">
+            <!-- Bottom Left: Active Database View -->
+            <div class="app-card">
+                <h2>Active Signed Label Catalog</h2>
+                <div style="overflow-x: auto;">
+                    <table id="catalogTable">
+                        <thead>
+                            <tr>
+                                <th>ISRC</th>
+                                <th>Track / Roster</th>
+                                <th>Splits (Label/Art/Prod)</th>
+                                <th>Unrecouped Advances</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filled Dynamically via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bottom Right: Real-time Calculations Console -->
+            <div class="app-card">
+                <h2>Operational Accounting Ledger Output</h2>
+                <div id="terminal" class="terminal-output">System initialized. Awaiting global financial statement imports...</div>
+            </div>
+        </div>
+
+        <p class="footer">© <span id="yr"></span> 🆎 Music · All rights reserved</p>
+    </main>
+
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        // Application State System
+        let labelCatalog = [
+            {
+                isrc: "GB-A1B-26-00001",
+                trackName: "No Cap (UK Drill)",
+                artistName: "Zone6 Hazard",
+                producerName: "GottiOnTheBeat",
+                labelShare: 0.50,
+                artistShare: 0.35,
+                producerShare: 0.15,
+                advanceRecoupable: 500.00
+            }
+        ];
+
+        // Sync local storage array to UI HTML Table
+        function updateCatalogTable() {
+            const tbody = document.querySelector("#catalogTable tbody");
+            tbody.innerHTML = "";
+            labelCatalog.forEach(track => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><code style="color:var(--glow); font-weight:600;">${track.isrc}</code></td>
+                    <td><strong>${track.trackName}</strong><br><small style="color:var(--muted)">Artist: ${track.artistName} | Prod: ${track.producerName}</small></td>
+                    <td>${track.labelShare*100}% / ${track.artistShare*100}% / ${track.producerShare*100}%</td>
+                    <td><span class="${track.advanceRecoupable > 0 ? 'cash-badge' : ''}">$${track.advanceRecoupable.toFixed(2)}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Add New Track Submission Processing
+        document.getElementById("trackForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const labelPct = parseFloat(document.getElementById("labelShare").value) / 100;
+            const artistPct = parseFloat(document.getElementById("artistShare").value) / 100;
+            const prodPct = parseFloat(document.getElementById("producerShare").value) / 100;
+
+            if ((labelPct + artistPct + prodPct).toFixed(2) !== "1.00") {
+                alert("Operational Error: Total splits must add up exactly to 100%. Adjust allocations.");
+                return;
+            }
+
+            labelCatalog.push({
+                isrc: document.getElementById("isrc").value.trim(),
+                trackName: document.getElementById("trackName").value.trim(),
+                artistName: document.getElementById("artistName").value.trim(),
+                producerName: document.getElementById("producerName").value.trim(),
+                labelShare: labelPct,
+                artistShare: artistPct,
+                producerShare: prodPct,
+                advanceRecoupable: parseFloat(document.getElementById("advance").value) || 0
+            });
+
+            this.reset();
+            document.getElementById("labelShare").value = "50";
+            document.getElementById("artistShare").value = "35";
+            document.getElementById("producerShare").value = "15";
+            updateCatalogTable();
+        });
+
+        // Load mock tracking statements
+        function loadSampleCSV() {
+            const sample = "GB-A1B-26-00001, Spotify UK Premium, 1850.00\nGB-A1B-26-00001, Apple Music Global, 920.40\nERR-ISRC-99, TikTok Sound Sync, 340.00";
+            document.getElementById("csvInput").value = sample;
+        }
+
+        // Master Ledger Calculation Engine Logic
+        function calculateRoyalties() {
+            const input = document.getElementById("csvInput").value.trim();
+            const terminal = document.getElementById("terminal");
+            
+            if(!input) {
+                terminal.innerHTML = "[-] Calculation Failed: Please input or paste incoming statement records first.";
+                return;
+            }
+
+            const lines = input.split("\n");
+            let totalGross = 0;
+            let totalLabelNet = 0;
+            let outputLog = `=======================================================\n`;
+            outputLog += `             AB MUSIC RECORDS LTD - AUDIT LOG          \n`;
+            outputLog += `=======================================================\n\n`;
+
+            lines.forEach((line) => {
+                if(!line.trim()) return;
+                const columns = line.split(",");
+                if(columns.length < 3) return;
+
+                const inputIsrc = columns[0].trim();
+                const source = columns[1].trim();
+                const amount = parseFloat(columns[2].trim()) || 0;
+
+                const match = labelCatalog.find(t => t.isrc === inputIsrc);
+
+                if(!match) {
+                    outputLog += `[ALERT] UNREGISTERED ISRC WARNING: ${inputIsrc}\n`;
+                    outputLog += `        Amount: $${amount.toFixed(2)} held in suspension ledger.\n\n`;
+                    return;
+                }
+
+                totalGross += amount;
+                
+                let labelShare = amount * match.labelShare;
+                let artistShare = amount * match.artistShare;
+                let prodShare = amount * match.producerShare;
+                
+                totalLabelNet += labelShare;
+
+                let initialAdvance = match.advanceRecoupable;
+                let appliedRecoupment = 0;
+                let finalArtistCashPayout = artistShare;
+
+                if(initialAdvance > 0) {
+                    if(artistShare >= initialAdvance) {
+                        appliedRecoupment = initialAdvance;
+                        finalArtistCashPayout = artistShare - initialAdvance;
+                        match.advanceRecoupable = 0;
+                    } else {
+                        appliedRecoupment = artistShare;
+                        finalArtistCashPayout = 0;
+                        match.advanceRecoupable = initialAdvance - artistShare;
+                    }
+                }
+
+                outputLog += `ASSET STREAMS: "${match.trackName}" [${inputIsrc}]\n`;
+                outputLog += `   DSP Portal : ${source} | Gross Collected: $${amount.toFixed(2)}\n`;
+                outputLog += `   -> AB MUSIC Share Retained   : $${labelShare.toFixed(2)}\n`;
+                outputLog += `   -> Artist Split [${match.artistName}] : Gross: $${artistShare.toFixed(2)} | Recouped: -$${appliedRecoupment.toFixed(2)} | Payout Check: $${finalArtistCashPayout.toFixed(2)}\n`;
+                if(prodShare > 0) {
+                    outputLog += `   -> Producer Split [${match.producerName}]: Net Cash Out: $${prodShare.toFixed(2)}\n`;
+                }
+                outputLog += `\n`;
+            });
+
+            outputLog += `=======================================================\n`;
+            outputLog += `               CONSOLIDATED LEDGER TOTALS              \n`;
+            outputLog += `=======================================================\n`;
+            outputLog += ` OVERALL INCOMING GROSS:     $${totalGross.toFixed(2)}\n`;
+            outputLog += ` AB MUSIC NET SYSTEM PROFIT: $${totalLabelNet.toFixed(2)}\n`;
+            outputLog += ` ROSTER LIABILITY OUTBOUND:  $${(totalGross - totalLabelNet).toFixed(2)}\n`;
+            outputLog += `=======================================================\n`;
+
+            terminal.innerHTML = outputLog;
+            updateCatalogTable();
+        }
+
+        // Initialize application layout
+        updateCatalogTable();
+    </script>
 </body>
 </html>
